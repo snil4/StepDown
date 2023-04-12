@@ -1,3 +1,11 @@
 .Main {
-	
+
+}
+
+.SongList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: self-start;
 }
