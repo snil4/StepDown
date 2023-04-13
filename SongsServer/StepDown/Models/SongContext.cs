@@ -19,6 +19,10 @@ public class SongContext : DbContext {
             entity.Property(e => e.title);
             entity.Property(e => e.artist);
             entity.Property(e => e.bpm);
+            entity.HasOne(e => e.uploader).WithMany(e => e.songs)
+            .HasForeignKey(e => e.uploaderId).HasPrincipalKey(e => e.id);
+            entity.HasMany(e => e.charts).WithOne(e => e.song)
+            .HasForeignKey(e => e.id).HasPrincipalKey(e => e.chartsId);
         });
     }
 

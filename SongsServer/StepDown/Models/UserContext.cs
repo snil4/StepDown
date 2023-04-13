@@ -18,7 +18,8 @@ public class UserContext : DbContext {
             entity.HasKey(e => e.id);
             entity.Property(e => e.userName);
             entity.Property(e => e.password);
-            entity.Property(e => e.songs);
+            entity.HasMany(e => e.songs).WithOne(e => e.uploader)
+            .HasForeignKey(e => e.uploaderId).HasPrincipalKey(e => e.id);
         });
     }
 
