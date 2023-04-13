@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StepDown.Models;
+using StepDown.Services;
 
 namespace StepDown.Controllers
 {
@@ -9,6 +10,8 @@ namespace StepDown.Controllers
     public class SongsController : ControllerBase
     {
         private readonly SongContext _context;
+
+        private readonly SongService service;
 
         public SongsController(SongContext context)
         {
@@ -88,6 +91,12 @@ namespace StepDown.Controllers
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetSong", new { id = song.id }, song);
+        }
+
+        // POST: api/Songs/parse
+        [HttpPost("parse")]
+        public async Task<ActionResult<Song>> ParseFile(string file) {
+            return service.parseFile(file);
         }
 
         // DELETE: api/Songs/5
