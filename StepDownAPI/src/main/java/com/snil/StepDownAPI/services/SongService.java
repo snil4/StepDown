@@ -5,12 +5,13 @@ import com.snil.StepDownAPI.exceptions.SongException;
 import com.snil.StepDownAPI.repositories.SongRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
-@Component
+@Service
 @Transactional
 public class SongService {
 
@@ -25,11 +26,22 @@ public class SongService {
         }
     }
 
-    public void addSong(Song song) throws SongException {
+    public Song addSong(Song song) throws SongException {
         try {
-            songRepo.save(song);
+            return songRepo.save(song);
         } catch (Exception e) {
             throw new SongException("Can't add song: " + e.getMessage());
+        }
+    }
+
+    public Song updateSong(Song song) throws SongException {
+        try {
+            if (songRepo.existsById(song.getId())) {
+                return songRepo.save(song);
+            }
+            throw new SongException("Can't find this song to update in the database");
+        } catch (Exception e) {
+            throw new SongException("Can't update song: " + e.getMessage());
         }
     }
 

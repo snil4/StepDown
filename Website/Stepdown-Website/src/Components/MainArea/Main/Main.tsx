@@ -13,7 +13,6 @@ function Main() {
 
     return (
         <div className="Main min-h-screen dark:bg-slate-800 dark:text-neutral-300">
-            Hello
             <div className="SongList">
 			    {songs.value.map(e => {return (<Song key={songs.value.indexOf(e)} Name={e}/>)})}
             </div>

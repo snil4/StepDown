@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@preact/signals": "^1.1.3",
-    "preact": "^10.13.0"
+    "axios": "^1.4.0",
+    "preact": "^10.13.0",
+    "redux": "^4.2.1"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.5.0",

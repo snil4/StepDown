@@ -95,6 +95,7 @@ public class Song {
 
 @Embeddable
 class Chart {
+    @Enumerated(EnumType.STRING)
     private Difficulty difficulty;
     private int level;
     private String name;
