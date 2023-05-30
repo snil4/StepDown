@@ -1,12 +1,15 @@
+import SongModel from "../../../../Models/SongModel";
+import config from "../../../../Util/config";
 import "./Song.css";
 
 interface SongProps {
-	Name: string;
+	song: SongModel;
 }
 
 function Song(props: SongProps) {
-    return (
-        <img width="512" src={props.Name} alt={props.Name}/>
+    return (<a href={`/${props.song.id}`}>
+            <img width="512" src={`${config.imageURL}${props.song.imagePath}`} alt={props.song.title}/>
+        </a>
     );
 }
 

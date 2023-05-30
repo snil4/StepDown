@@ -29,4 +29,6 @@ class SongService {
     }
 }
 
-export default SongService;
+const songService = new SongService()
+
+export default songService;
